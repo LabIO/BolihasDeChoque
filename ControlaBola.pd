@@ -1,8 +1,7 @@
-#N canvas 181 191 532 456 10;
+#N canvas 179 190 532 456 10;
 #X obj 50 312 netsend;
 #X obj 56 351 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
-#X msg 30 12 connect 192.168.1.73 3335;
 #X obj 74 174 pack f f;
 #X obj 116 143 t b f;
 #X floatatom 99 115 5 0 0 0 - - -;
@@ -15,7 +14,7 @@
 #X obj 189 213 + 1;
 #X obj 217 214 - 1;
 #X obj 184 291 demux;
-#X obj 91 159 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 91 159 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 271 232 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
@@ -31,9 +30,9 @@
 #X obj -158 150 - 1;
 #X obj -191 227 demux;
 #X obj -258 100 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
-0 1;
+1 1;
 #X obj -104 168 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
-0 1;
+1 1;
 #X obj -128 46 t b b;
 #X obj -72 54 t b b;
 #X msg -147 80 0;
@@ -103,15 +102,15 @@
 #X connect 38 0 27 0;
 #X restore 105 81 pd teclas;
 #X obj 198 112 vsl 15 70 0 1 0 0 empty empty empty 0 -9 0 10 -261234
--1 -1 1500 1;
-#X obj 228 110 vsl 15 70 0 1 0 0 empty empty empty 0 -9 0 10 -204786
--1 -1 0 1;
-#X obj 258 109 vsl 15 70 0 1 0 0 empty empty empty 0 -9 0 10 -203904
 -1 -1 6900 1;
+#X obj 228 110 vsl 15 70 0 1 0 0 empty empty empty 0 -9 0 10 -204786
+-1 -1 4200 1;
+#X obj 258 109 vsl 15 70 0 1 0 0 empty empty empty 0 -9 0 10 -203904
+-1 -1 4400 1;
 #X obj 207 231 pack f f f;
 #X obj 262 194 t b f;
 #X obj 216 195 t b f;
-#N canvas 725 190 450 300 som 1;
+#N canvas 723 189 450 300 som 1;
 #N canvas 0 0 450 300 (subpatch) 0;
 #X array sample 96000 float 3;
 #A 0 -0.00968027 -0.0104959 -0.0115063 -0.0122564 -0.0135572 -0.0146592
@@ -14510,26 +14509,26 @@
 -1 -1;
 #X obj 262 207 dac~;
 #X obj 262 26 r toca_sample;
-#X obj 372 205 print;
 #X msg 333 93 0;
 #X obj 273 138 spigot;
 #X obj 261 55 t b b;
 #X msg 364 93 1;
 #X obj 35 183 r grava;
+#X obj 373 48 loadbang;
 #X connect 2 0 1 0;
 #X connect 3 0 1 0;
 #X connect 4 0 6 0;
 #X connect 4 0 6 1;
-#X connect 4 1 8 0;
-#X connect 4 1 12 0;
-#X connect 5 0 10 0;
-#X connect 7 0 11 0;
-#X connect 9 0 10 1;
-#X connect 10 0 4 0;
-#X connect 11 0 9 0;
-#X connect 11 1 5 0;
-#X connect 12 0 10 1;
-#X connect 13 0 3 0;
+#X connect 4 1 11 0;
+#X connect 5 0 9 0;
+#X connect 7 0 10 0;
+#X connect 8 0 9 1;
+#X connect 9 0 4 0;
+#X connect 10 0 8 0;
+#X connect 10 1 5 0;
+#X connect 11 0 9 1;
+#X connect 12 0 3 0;
+#X connect 13 0 11 0;
 #X restore 338 381 pd som;
 #X obj 185 398 s toca_sample;
 #X obj 180 365 route colide;
@@ -14541,27 +14540,28 @@
 #X msg 175 263 send mick cor \$1 \$2 \$3;
 #X obj 174 301 netreceive 3340 1;
 #X obj 182 337 route 1;
+#X msg 30 12 connect 192.168.1.75 3335;
 #X connect 0 0 1 0;
-#X connect 2 0 0 0;
-#X connect 3 0 19 0;
-#X connect 4 0 3 0;
-#X connect 4 1 3 1;
+#X connect 2 0 18 0;
+#X connect 3 0 2 0;
+#X connect 3 1 2 1;
+#X connect 4 0 2 0;
 #X connect 5 0 3 0;
 #X connect 6 0 4 0;
-#X connect 7 0 5 0;
-#X connect 7 1 6 0;
-#X connect 8 0 11 0;
-#X connect 9 0 13 0;
-#X connect 10 0 12 0;
-#X connect 11 0 21 0;
-#X connect 12 0 11 0;
-#X connect 12 1 11 2;
-#X connect 13 0 11 0;
-#X connect 13 1 11 1;
-#X connect 16 0 15 0;
-#X connect 19 0 0 0;
-#X connect 20 0 7 0;
-#X connect 20 1 7 1;
-#X connect 21 0 0 0;
-#X connect 22 0 23 0;
-#X connect 23 0 16 0;
+#X connect 6 1 5 0;
+#X connect 7 0 10 0;
+#X connect 8 0 12 0;
+#X connect 9 0 11 0;
+#X connect 10 0 20 0;
+#X connect 11 0 10 0;
+#X connect 11 1 10 2;
+#X connect 12 0 10 0;
+#X connect 12 1 10 1;
+#X connect 15 0 14 0;
+#X connect 18 0 0 0;
+#X connect 19 0 6 0;
+#X connect 19 1 6 1;
+#X connect 20 0 0 0;
+#X connect 21 0 22 0;
+#X connect 22 0 15 0;
+#X connect 23 0 0 0;
